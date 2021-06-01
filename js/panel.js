@@ -16,7 +16,7 @@ function CreatePanel(context) {
         }else{
             var status = 1;
         }
-        var PanelX = Random(0,508);
+        var PanelX = Random(10,400);
         var PanelY = minHeight - Random(GameData.level,140);
         var PanelColor = getRamNumber();
 

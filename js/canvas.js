@@ -2,6 +2,9 @@ var canvas = document.getElementById("canvas");
 var Height = window.screen.height * 0.8;
 canvas.height = Height;
 
+// var Width = height * 0.5;
+// canvas.width = Width;
+
 var context = canvas.getContext("2d");
 var backgroundimg = new Image();
 var Ldoodle = new Image();
@@ -18,29 +21,29 @@ backgroundimg.onload = function (ev) {
     context.fillStyle = pattern;
     context.fillRect(0, 0, 600, Height);
     context.beginPath();
-    context.moveTo(254, Height - 60);
-    context.lineTo(314, Height - 60);
+    context.moveTo(224, Height - 60);
+    context.lineTo(284, Height - 60);
     context.lineWidth = 10;
     context.strokeStyle = "green";
     context.lineCap = "round";
     context.stroke();
     panelgroup.push({
-        x: 254,
+        x: 200,
         y: Height - 60,
         status: 1,
         pcolor: "green"
     });
-    Player.x = 253;
+    Player.x = 224;
     Player.y = Height - 125;
     context.drawImage(Rdoodle, Player.x, Player.y);
     context.drawImage(Title, Player.x-220, Player.y-400);
 
     function startanimation() {
-        context.clearRect(0, 0, 568, Height);
+        context.clearRect(0, 0, canvas.width, Height);
 
         CreatePanel(context);
         context.fillStyle = pattern;
-        context.fillRect(0, 0, 568, Height);
+        context.fillRect(0, 0, canvas.width, Height);
         context.font = "bold 20px Arial";
         context.textAlign = "left";
         context.fillStyle = "#a0522d";
@@ -55,7 +58,7 @@ backgroundimg.onload = function (ev) {
             window.cancelAnimationFrame(startanimation);
             // canvas.style.cursor = "auto";
             
-            context.fillText("Game Over!\nYour score is: "+parseInt(GameData.score),20, 30);
+            // context.fillText("Game Over!\nYour score is: "+parseInt(GameData.score),20, 30);
             alert("Game Over!\nYour score is: "+parseInt(GameData.score));
                 location.reload();
         } else {
