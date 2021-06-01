@@ -19,7 +19,7 @@ backgroundimg.src = "img/bg.jpg";
 backgroundimg.onload = function (ev) {
     var pattern = context.createPattern(backgroundimg, "repeat");
     context.fillStyle = pattern;
-    context.fillRect(0, 0, 600, Height);
+    context.fillRect(0, 0, Width, Height);
     context.beginPath();
     context.moveTo(canvas.width/2-30, Height - 60);
     context.lineTo(canvas.width/2+30, Height - 60);
