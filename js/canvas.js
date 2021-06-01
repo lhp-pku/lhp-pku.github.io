@@ -2,8 +2,8 @@ var canvas = document.getElementById("canvas");
 var Height = window.screen.height * 0.8;
 canvas.height = Height;
 
-// var Width = height * 0.5;
-// canvas.width = Width;
+var Width = Height * 0.6;
+canvas.width = Width;
 
 var context = canvas.getContext("2d");
 var backgroundimg = new Image();
@@ -21,29 +21,30 @@ backgroundimg.onload = function (ev) {
     context.fillStyle = pattern;
     context.fillRect(0, 0, 600, Height);
     context.beginPath();
-    context.moveTo(224, Height - 60);
-    context.lineTo(284, Height - 60);
+    context.moveTo(canvas.width/2-30, Height - 60);
+    context.lineTo(canvas.width/2+30, Height - 60);
     context.lineWidth = 10;
     context.strokeStyle = "green";
     context.lineCap = "round";
     context.stroke();
     panelgroup.push({
-        x: 200,
+        x: canvas.width/2,
         y: Height - 60,
         status: 1,
-        pcolor: "green"
+        pcolor: "green",
+        plength: 60
     });
-    Player.x = 224;
+    Player.x = canvas.width/2-30;
     Player.y = Height - 125;
     context.drawImage(Rdoodle, Player.x, Player.y);
-    context.drawImage(Title, Player.x-220, Player.y-400);
+    context.drawImage(Title, Player.x+30-150, Player.y-400);
 
     function startanimation() {
-        context.clearRect(0, 0, canvas.width, Height);
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
         CreatePanel(context);
         context.fillStyle = pattern;
-        context.fillRect(0, 0, canvas.width, Height);
+        context.fillRect(0, 0, canvas.width, canvas.height);
         context.font = "bold 20px Arial";
         context.textAlign = "left";
         context.fillStyle = "#a0522d";
@@ -56,9 +57,6 @@ backgroundimg.onload = function (ev) {
 
         if (Player.y > Height) {
             window.cancelAnimationFrame(startanimation);
-            // canvas.style.cursor = "auto";
-            
-            // context.fillText("Game Over!\nYour score is: "+parseInt(GameData.score),20, 30);
             alert("Game Over!\nYour score is: "+parseInt(GameData.score));
                 location.reload();
         } else {
@@ -68,7 +66,6 @@ backgroundimg.onload = function (ev) {
     }
     var start = document.getElementById("startBTN");
     start.addEventListener("click",function () {
-        // canvas.style.cursor = "auto";
         window.requestAnimationFrame(startanimation);
         start.style.display = "none";
 

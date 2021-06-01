@@ -9,22 +9,32 @@ function getRamNumber(){
 }
 function CreatePanel(context) {
     if(panelgroup[panelgroup.length-1].y >=0){
-
+        
         var minHeight = panelgroup[panelgroup.length-1].y;
         if(GameData.probability >= Random(0,100)){
             var status = 0;
-        }else{
+            if(30 >= Random(0,100)){
+                var status = 2;
+            }
+            else if(30 >= Random(0,100)){
+                var status = 3;
+            }
+        }
+        else{
             var status = 1;
         }
-        var PanelX = Random(10,400);
+
+        var PanelX = Random(40,canvas.width - 80);
         var PanelY = minHeight - Random(GameData.level,140);
         var PanelColor = getRamNumber();
+        var PanelLength = Random(30,60);
 
         panelgroup.push({
             x:PanelX,
             y:PanelY,
             status:status,
-            pcolor:PanelColor
+            pcolor:PanelColor,
+            plength:PanelLength
         });
     }
 }

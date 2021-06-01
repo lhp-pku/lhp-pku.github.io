@@ -2,7 +2,7 @@ function collide() {
     for (let i = 0; i < panelgroup.length; i++) {
         var panel = panelgroup[i];
         if(Player.condition == 0){
-            if (Player.x <= panel.x + 40 && Player.x + 42 >= panel.x) {
+            if (Player.x <= panel.x + panel.plength/2-20 && Player.x >= panel.x - panel.plength-40) {
                 if (Player.y + 60 <= panel.y + 5 && Player.y + 60 >= panel.y - 5) {
                     if(panel.status == 0){
                         panelgroup.splice(i,1);

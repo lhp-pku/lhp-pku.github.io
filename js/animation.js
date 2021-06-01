@@ -22,9 +22,10 @@ function animation(context) {
         var PanelY = panelgroup[i].y;
         var status = panelgroup[i].status;
         var pcolor = panelgroup[i].pcolor;
+        var plength = panelgroup[i].plength;
         context.beginPath();
-        context.moveTo(PanelX, PanelY);
-        context.lineTo(PanelX + 60, PanelY);
+        context.moveTo(PanelX - plength/2, PanelY);
+        context.lineTo(PanelX + plength/2, PanelY);
         if (status) {
             context.strokeStyle = pcolor;
         } else {
@@ -72,8 +73,8 @@ function move(context) {
         Player.direction = 0;
         Player.x = Player.x - 27;
     }
-    
-    
+
+
     if (mouseX > Player.x + 3 && mouseX <= Player.x + 9) {
         Player.direction = 1;
         Player.x = Player.x + 6;
@@ -106,29 +107,42 @@ function gamescroll() {
     if (Player.y <= Height / 2) {
         var distance = Height / 2 - Player.y;
         for (let i = 0; i < panelgroup.length; i++) {
+
             var panel = panelgroup[i];
+            if (panel.status == 2){
+                panel.x += Width/150;
+                if(panel.x >= Width - 40) {
+                    panelgroup[i].status = 3;
+                }
+            }
+            else if (panel.status == 3){
+                panel.x -= Width/150;
+                if(panel.x <= 40) {
+                    panelgroup[i].status = 2;
+                }
+            }
             panel.y += distance / 2;
         }
         Player.y += distance / 2;
-        GameData.score +=distance/20;
+        GameData.score += distance / 20;
     }
 
- if(GameData.score>=300){
-     GameData.level = 50;
-     GameData.probability = 30;
- }
-    if(GameData.score>=600){
+    if (GameData.score >= 300) {
+        GameData.level = 50;
+        GameData.probability = 30;
+    }
+    if (GameData.score >= 600) {
         GameData.level = 70;
-        GameData.probability = 50;
+        GameData.probability = 40;
 
     }
-    if(GameData.score>=900){
+    if (GameData.score >= 900) {
         GameData.level = 90;
-        GameData.probability = 70;
+        GameData.probability = 60;
     }
-    if(GameData.score>=1200){
+    if (GameData.score >= 1200) {
         GameData.level = 120;
-        GameData.probability = 90;
+        GameData.probability = 80;
     }
 
     if (panelgroup[0].y > Height) {
