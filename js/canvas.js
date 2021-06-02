@@ -8,10 +8,14 @@ var context = canvas.getContext("2d");
 var backgroundimg = new Image();
 var Ldoodle = new Image();
 var Rdoodle = new Image();
+var Lfrog = new Image();
+var Rfrog = new Image();
 var Mouse = new Image();
 var Title = new Image();
 Ldoodle.src = "img/Ldoodle.png";
 Rdoodle.src = "img/Rdoodle.png";
+Lfrog.src = "img/frog.png";
+Rfrog.src = "img/frog.png";
 Mouse.src = "img/mouse.png";
 Title.src = "img/title.png";
 backgroundimg.src = "img/bg.jpg";
@@ -25,7 +29,7 @@ backgroundimg.onload = function (ev) {
     context.lineWidth = 10;
     context.strokeStyle = "green";
     context.lineCap = "round";
-    context.stroke();
+
     panelgroup.push({
         x: canvas.width / 2,
         y: canvas.height - 60,
@@ -35,7 +39,8 @@ backgroundimg.onload = function (ev) {
     });
     Player.x = canvas.width / 2 - 30;
     Player.y = canvas.height - 125;
-    context.drawImage(Rdoodle, Player.x, Player.y);
+    context.drawImage(Rdoodle, canvas.width / 2 - 30, canvas.height-290);
+    context.drawImage(Rfrog, canvas.width / 2 - 30,canvas.height-170);
     context.drawImage(Title, Player.x + 30 - 150, Player.y - 400);
 
     function startanimation() {
@@ -57,8 +62,6 @@ backgroundimg.onload = function (ev) {
         if (Player.y > canvas.height) {
             window.cancelAnimationFrame(startanimation);
             var userName = prompt("Game Over!\nYour score is: " + parseInt(GameData.score) + "\n请留下尊姓大名!", "Anyomous User");
-
-
             alert(userName+", 你的得分是: " + parseInt(GameData.score)+"\n太棒了! 再来一局吧?");
             location.reload();
         } else {
@@ -66,11 +69,42 @@ backgroundimg.onload = function (ev) {
         }
 
     }
-    var start = document.getElementById("startBTN");
-    start.addEventListener("click", function () {
+    var start1 = document.getElementById("startBTN");
+    var start2 = document.getElementById("startBTN2");
+    start1.addEventListener("click", function () {
+                
+        Ldoodle.src = "img/Ldoodle.png";
+        Rdoodle.src = "img/Rdoodle.png";
         window.requestAnimationFrame(startanimation);
-        start.style.display = "none";
+        start1.style.display = "none";
+        start2.style.display = "none";
+        Player.x = canvas.width / 2 - 30;
+        Player.y = canvas.height - 220;
+        panelgroup.push({
+            x: Player.x-30,
+            y: Player.y,
+            status: 1,
+            pcolor: "green",
+            plength: 60
+        });
 
+    })
+    start2.addEventListener("click", function () {
+        
+        Ldoodle.src = "img/frog.png";
+        Rdoodle.src = "img/frog.png";
+        window.requestAnimationFrame(startanimation);
+        start1.style.display = "none";
+        start2.style.display = "none";
+        Player.x = canvas.width / 2 - 30;
+        Player.y = canvas.height - 170;
+        panelgroup.push({
+            x: Player.x-30,
+            y: Player.y,
+            status: 1,
+            pcolor: "green",
+            plength: 60
+        });
     })
 
 };
