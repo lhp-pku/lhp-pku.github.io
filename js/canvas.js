@@ -12,13 +12,14 @@ var Lfrog = new Image();
 var Rfrog = new Image();
 var Mouse = new Image();
 var Title = new Image();
-var ChangeBasis = 150;
+var Select = new Image();
 Ldoodle.src = "img/Ldoodle.png";
 Rdoodle.src = "img/Rdoodle.png";
-Lfrog.src = "img/frog.png";
-Rfrog.src = "img/frog.png";
+Lfrog.src = "img/Lfrog.png";
+Rfrog.src = "img/Rfrog.png";
 Mouse.src = "img/mouse.png";
 Title.src = "img/title.png";
+Select.src = "img/select.png";
 backgroundimg.src = "img/bg.jpg";
 backgroundimg.onload = function (ev) {
     var pattern = context.createPattern(backgroundimg, "repeat");
@@ -43,6 +44,7 @@ backgroundimg.onload = function (ev) {
     context.drawImage(Rdoodle, canvas.width / 2 - 30, canvas.height-290);
     context.drawImage(Rfrog, canvas.width / 2 - 30,canvas.height-170);
     context.drawImage(Title, Player.x + 30 - 150, Player.y - 400);
+    context.drawImage(Select, Player.x + 30 - 100, Player.y+60);
 
     function startanimation() {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -93,8 +95,8 @@ backgroundimg.onload = function (ev) {
     })
     start2.addEventListener("click", function () {
         
-        Ldoodle.src = "img/frog.png";
-        Rdoodle.src = "img/frog.png";
+        Ldoodle.src = "img/Lfrog.png";
+        Rdoodle.src = "img/Rfrog.png";
         window.requestAnimationFrame(startanimation);
         start1.style.display = "none";
         start2.style.display = "none";

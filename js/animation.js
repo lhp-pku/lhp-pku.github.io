@@ -50,48 +50,57 @@ function move(context) {
     }
 
 
-    if (mouseX < Player.x - 3 && mouseX >= Player.x - 9) {
+    if (mouseX < Player.x - 5&& mouseX >= Player.x - 15) {
         Player.direction = 0;
-        Player.x = Player.x - 6;
+        Player.x = Player.x - 5;
     }
-    if (mouseX < Player.x - 9 && mouseX >= Player.x - 15) {
+    if (mouseX < Player.x - 15) {
         Player.direction = 0;
-        Player.x = Player.x - 12;
+        Player.x = Player.x - 10;
     }
-    if (mouseX < Player.x - 15 && mouseX >= Player.x - 21) {
-        Player.direction = 0;
-        Player.x = Player.x - 18;
-    }
-    if (mouseX < Player.x - 21 && mouseX >= Player.x - 27) {
-        Player.direction = 0;
-        Player.x = Player.x - 24;
-    }
-    if (mouseX < Player.x - 27) {
-        Player.direction = 0;
-        Player.x = Player.x - 27;
-    }
+    // if (mouseX < Player.x - 9 && mouseX >= Player.x - 15) {
+    //     Player.direction = 0;
+    //     Player.x = Player.x - 12;
+    // }
+    // if (mouseX < Player.x - 15 && mouseX >= Player.x - 21) {
+    //     Player.direction = 0;
+    //     Player.x = Player.x - 18;
+    // }
+    // if (mouseX < Player.x - 21 && mouseX >= Player.x - 27) {
+    //     Player.direction = 0;
+    //     Player.x = Player.x - 24;
+    // }
+    // if (mouseX < Player.x - 27) {
+    //     Player.direction = 0;
+    //     Player.x = Player.x - 27;
+    // }
 
 
-    if (mouseX > Player.x + 3 && mouseX <= Player.x + 9) {
+    if (mouseX > Player.x + 5&& mouseX <= Player.x + 15) {
         Player.direction = 1;
-        Player.x = Player.x + 6;
+        Player.x = Player.x + 5;
     }
-    if (mouseX > Player.x + 9 && mouseX <= Player.x + 15) {
+    if (mouseX > Player.x + 15) {
         Player.direction = 1;
-        Player.x = Player.x + 12;
+        Player.x = Player.x + 10;
     }
-    if (mouseX > Player.x + 15 && mouseX <= Player.x + 21) {
-        Player.direction = 1;
-        Player.x = Player.x + 18;
-    }
-    if (mouseX > Player.x + 21 && mouseX <= Player.x + 27) {
-        Player.direction = 1;
-        Player.x = Player.x + 24;
-    }
-    if (mouseX > Player.x + 27) {
-        Player.direction = 1;
-        Player.x = Player.x + 27;
-    }
+
+    // if (mouseX > Player.x + 9 && mouseX <= Player.x + 15) {
+    //     Player.direction = 1;
+    //     Player.x = Player.x + 12;
+    // }
+    // if (mouseX > Player.x + 15 && mouseX <= Player.x + 21) {
+    //     Player.direction = 1;
+    //     Player.x = Player.x + 18;
+    // }
+    // if (mouseX > Player.x + 21 && mouseX <= Player.x + 27) {
+    //     Player.direction = 1;
+    //     Player.x = Player.x + 24;
+    // }
+    // if (mouseX > Player.x + 27) {
+    //     Player.direction = 1;
+    //     Player.x = Player.x + 27;
+    // }
     if (Player.direction == 1) {
         context.drawImage(Rdoodle, Player.x, Player.y);
     }
@@ -128,27 +137,36 @@ function gamescroll() {
         Player.y += distance / 2;
         GameData.score += distance / 20;
     }
-
+    if (GameData.score >= 150) {
+        ChangeBasis = 140;
+        GameData.level = 50;
+        GameData.probability = 25;
+    }
     if (GameData.score >= 300) {
         ChangeBasis = 140;
         GameData.level = 50;
-        GameData.probability = 30;
+        GameData.probability = 40;
     }
-    if (GameData.score >= 600) {
+    if (GameData.score >= 700) {
         ChangeBasis = 110;
         GameData.level = 70;
-        GameData.probability = 40;
+        GameData.probability = 50;
 
     }
-    if (GameData.score >= 900) {
+    if (GameData.score >= 1000) {
         ChangeBasis = 80;
         GameData.level = 90;
         GameData.probability = 60;
     }
-    if (GameData.score >= 1200) {
+    if (GameData.score >= 1500) {
         ChangeBasis = 65;
         GameData.level = 120;
-        GameData.probability = 80;
+        GameData.probability = 75;
+    }
+    if (GameData.score >= 1800) {
+        ChangeBasis = 60;
+        GameData.level = 120;
+        GameData.probability = 90;
     }
 
     if (panelgroup[0].y > Height) {
