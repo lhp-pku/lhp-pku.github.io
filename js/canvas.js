@@ -12,6 +12,7 @@ var Lfrog = new Image();
 var Rfrog = new Image();
 var Mouse = new Image();
 var Title = new Image();
+var ChangeBasis = 150;
 Ldoodle.src = "img/Ldoodle.png";
 Rdoodle.src = "img/Rdoodle.png";
 Lfrog.src = "img/frog.png";
@@ -53,7 +54,7 @@ backgroundimg.onload = function (ev) {
         context.textAlign = "left";
         context.fillStyle = "#a0522d";
         context.fillText("Score: " + parseInt(GameData.score), 20, 30);
-        animation(context);
+        // animation(context);
         jump();
         collide();
         gamescroll();
@@ -66,6 +67,7 @@ backgroundimg.onload = function (ev) {
             location.reload();
         } else {
             requestAnimationFrame(startanimation);
+            changeposition();
         }
 
     }

@@ -16,7 +16,18 @@ if (!window.requestAnimationFrame) {
 
 
 
-function animation(context) {
+function jump() {
+    Player.y = Player.y - Player.Yacceleration;
+    Player.Yacceleration -= 0.5;
+    if (Player.Yacceleration < 0) {
+        Player.condition = 0;
+    }
+    if (Player.Yacceleration < -10) {
+        Player.Yacceleration = -10;
+    }
+}
+
+function move(context) {
     for (let i = 0; i < panelgroup.length; i++) {
         var PanelX = panelgroup[i].x;
         var PanelY = panelgroup[i].y;
@@ -34,20 +45,6 @@ function animation(context) {
 
         context.stroke();
     }
-}
-
-function jump() {
-    Player.y = Player.y - Player.Yacceleration;
-    Player.Yacceleration -= 0.5;
-    if (Player.Yacceleration < 0) {
-        Player.condition = 0;
-    }
-    if (Player.Yacceleration < -10) {
-        Player.Yacceleration = -10;
-    }
-}
-
-function move(context) {
     if (mouseX == null) {
         context.drawImage(Rdoodle, Player.x, Player.y);
     }
@@ -102,25 +99,30 @@ function move(context) {
         context.drawImage(Ldoodle, Player.x, Player.y);
     }
 }
+function changeposition() {
+    for (let i = 0; i < panelgroup.length; i++) {
 
+        var panel = panelgroup[i];
+        if (panel.status == 2){
+            panel.x += Width/ChangeBasis;
+            if(panel.x >= Width - 40) {
+                panelgroup[i].status = 3;
+            }
+        }
+        else if (panel.status == 3){
+            panel.x -= Width/ChangeBasis;
+            if(panel.x <= 40) {
+                panelgroup[i].status = 2;
+            }
+        }
+    }
+}
 function gamescroll() {
     if (Player.y <= Height / 2) {
         var distance = Height / 2 - Player.y;
         for (let i = 0; i < panelgroup.length; i++) {
 
             var panel = panelgroup[i];
-            if (panel.status == 2){
-                panel.x += Width/150;
-                if(panel.x >= Width - 40) {
-                    panelgroup[i].status = 3;
-                }
-            }
-            else if (panel.status == 3){
-                panel.x -= Width/150;
-                if(panel.x <= 40) {
-                    panelgroup[i].status = 2;
-                }
-            }
             panel.y += distance / 2;
         }
         Player.y += distance / 2;
@@ -128,19 +130,23 @@ function gamescroll() {
     }
 
     if (GameData.score >= 300) {
+        ChangeBasis = 140;
         GameData.level = 50;
         GameData.probability = 30;
     }
     if (GameData.score >= 600) {
+        ChangeBasis = 110;
         GameData.level = 70;
         GameData.probability = 40;
 
     }
     if (GameData.score >= 900) {
+        ChangeBasis = 80;
         GameData.level = 90;
         GameData.probability = 60;
     }
     if (GameData.score >= 1200) {
+        ChangeBasis = 65;
         GameData.level = 120;
         GameData.probability = 80;
     }
