@@ -1,3 +1,4 @@
+var chara = 1;
 var canvas = document.getElementById("canvas");
 var Height = window.screen.height * 0.8;
 var Width = Math.min(window.screen.height * 0.6, window.screen.width) * 0.8;
@@ -32,13 +33,6 @@ backgroundimg.onload = function (ev) {
     context.strokeStyle = "green";
     context.lineCap = "round";
 
-    panelgroup.push({
-        x: canvas.width / 2,
-        y: canvas.height - 60,
-        status: 1,
-        pcolor: "green",
-        plength: 60
-    });
     Player.x = canvas.width / 2 - 30;
     Player.y = canvas.height - 125;
     context.drawImage(Rdoodle, canvas.width / 2 - 30, canvas.height-290);
@@ -77,16 +71,16 @@ backgroundimg.onload = function (ev) {
     var start2 = document.getElementById("startBTN2");
     start1.addEventListener("click", function () {
                 
-        Ldoodle.src = "img/Ldoodle.png";
-        Rdoodle.src = "img/Rdoodle.png";
+        chara = 1;
         window.requestAnimationFrame(startanimation);
         start1.style.display = "none";
         start2.style.display = "none";
         Player.x = canvas.width / 2 - 30;
         Player.y = canvas.height - 220;
+        
         panelgroup.push({
-            x: Player.x-30,
-            y: Player.y,
+            x: Player.x+30,
+            y: Player.y+90,
             status: 1,
             pcolor: "green",
             plength: 60
@@ -95,16 +89,15 @@ backgroundimg.onload = function (ev) {
     })
     start2.addEventListener("click", function () {
         
-        Ldoodle.src = "img/Lfrog.png";
-        Rdoodle.src = "img/Rfrog.png";
+        chara = 2;
         window.requestAnimationFrame(startanimation);
         start1.style.display = "none";
         start2.style.display = "none";
         Player.x = canvas.width / 2 - 30;
         Player.y = canvas.height - 170;
         panelgroup.push({
-            x: Player.x-30,
-            y: Player.y,
+            x: Player.x+30,
+            y: Player.y+90,
             status: 1,
             pcolor: "green",
             plength: 60

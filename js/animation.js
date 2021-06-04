@@ -35,8 +35,8 @@ function move(context) {
         var pcolor = panelgroup[i].pcolor;
         var plength = panelgroup[i].plength;
         context.beginPath();
-        context.moveTo(PanelX - plength/2, PanelY);
-        context.lineTo(PanelX + plength/2, PanelY);
+        context.moveTo(PanelX - plength / 2, PanelY);
+        context.lineTo(PanelX + plength / 2, PanelY);
         if (status) {
             context.strokeStyle = pcolor;
         } else {
@@ -50,7 +50,7 @@ function move(context) {
     }
 
 
-    if (mouseX < Player.x - 5&& mouseX >= Player.x - 15) {
+    if (mouseX < Player.x - 5 && mouseX >= Player.x - 15) {
         Player.direction = 0;
         Player.x = Player.x - 5;
     }
@@ -58,25 +58,9 @@ function move(context) {
         Player.direction = 0;
         Player.x = Player.x - 10;
     }
-    // if (mouseX < Player.x - 9 && mouseX >= Player.x - 15) {
-    //     Player.direction = 0;
-    //     Player.x = Player.x - 12;
-    // }
-    // if (mouseX < Player.x - 15 && mouseX >= Player.x - 21) {
-    //     Player.direction = 0;
-    //     Player.x = Player.x - 18;
-    // }
-    // if (mouseX < Player.x - 21 && mouseX >= Player.x - 27) {
-    //     Player.direction = 0;
-    //     Player.x = Player.x - 24;
-    // }
-    // if (mouseX < Player.x - 27) {
-    //     Player.direction = 0;
-    //     Player.x = Player.x - 27;
-    // }
 
 
-    if (mouseX > Player.x + 5&& mouseX <= Player.x + 15) {
+    if (mouseX > Player.x + 5 && mouseX <= Player.x + 15) {
         Player.direction = 1;
         Player.x = Player.x + 5;
     }
@@ -84,43 +68,37 @@ function move(context) {
         Player.direction = 1;
         Player.x = Player.x + 10;
     }
-
-    // if (mouseX > Player.x + 9 && mouseX <= Player.x + 15) {
-    //     Player.direction = 1;
-    //     Player.x = Player.x + 12;
-    // }
-    // if (mouseX > Player.x + 15 && mouseX <= Player.x + 21) {
-    //     Player.direction = 1;
-    //     Player.x = Player.x + 18;
-    // }
-    // if (mouseX > Player.x + 21 && mouseX <= Player.x + 27) {
-    //     Player.direction = 1;
-    //     Player.x = Player.x + 24;
-    // }
-    // if (mouseX > Player.x + 27) {
-    //     Player.direction = 1;
-    //     Player.x = Player.x + 27;
-    // }
     if (Player.direction == 1) {
-        context.drawImage(Rdoodle, Player.x, Player.y);
+
+        if (chara == 1) {
+            context.drawImage(Rdoodle, Player.x, Player.y);
+        }
+        else if (chara == 2) {
+            context.drawImage(Rfrog, Player.x, Player.y);
+        }
     }
     if (Player.direction == 0) {
-        context.drawImage(Ldoodle, Player.x, Player.y);
+        if (chara == 1) {
+            context.drawImage(Ldoodle, Player.x, Player.y);
+        }
+        else if (chara == 2) {
+            context.drawImage(Lfrog, Player.x, Player.y);
+        }
     }
 }
 function changeposition() {
     for (let i = 0; i < panelgroup.length; i++) {
 
         var panel = panelgroup[i];
-        if (panel.status == 2){
-            panel.x += Width/ChangeBasis;
-            if(panel.x >= Width - 40) {
+        if (panel.status == 2) {
+            panel.x += Width / ChangeBasis;
+            if (panel.x >= Width - 40) {
                 panelgroup[i].status = 3;
             }
         }
-        else if (panel.status == 3){
-            panel.x -= Width/ChangeBasis;
-            if(panel.x <= 40) {
+        else if (panel.status == 3) {
+            panel.x -= Width / ChangeBasis;
+            if (panel.x <= 40) {
                 panelgroup[i].status = 2;
             }
         }
@@ -138,33 +116,38 @@ function gamescroll() {
         GameData.score += distance / 20;
     }
     if (GameData.score >= 150) {
-        ChangeBasis = 140;
+        ChangeBasis = 150;
         GameData.level = 50;
         GameData.probability = 25;
     }
     if (GameData.score >= 300) {
-        ChangeBasis = 140;
+        ChangeBasis = 150;
         GameData.level = 50;
         GameData.probability = 40;
     }
-    if (GameData.score >= 700) {
-        ChangeBasis = 110;
-        GameData.level = 70;
+    if (GameData.score >= 500) {
+        ChangeBasis = 130;
+        GameData.level = 60;
         GameData.probability = 50;
 
     }
-    if (GameData.score >= 1000) {
-        ChangeBasis = 80;
-        GameData.level = 90;
+    if (GameData.score >= 700) {
+        ChangeBasis = 110;
+        GameData.level = 75;
         GameData.probability = 60;
     }
-    if (GameData.score >= 1500) {
-        ChangeBasis = 65;
-        GameData.level = 120;
+    if (GameData.score >= 1000) {
+        ChangeBasis = 90;
+        GameData.level = 100;
         GameData.probability = 75;
+        
+        Ldoodle.src = "img/Ldoodlenew.png";
+        Rdoodle.src = "img/Rdoodlenew.png";
+        Lfrog.src = "img/Lfrognew.png";
+        Rfrog.src = "img/Rfrognew.png";
     }
-    if (GameData.score >= 1800) {
-        ChangeBasis = 60;
+    if (GameData.score >= 1300) {
+        ChangeBasis = 80;
         GameData.level = 120;
         GameData.probability = 90;
     }
