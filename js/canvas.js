@@ -82,6 +82,7 @@ backgroundimg.onload = function (ev) {
                                   alert(scores);
                               }
             });
+            alert(userName+", 你的得分是: " + parseInt(GameData.score)+"\n太棒了! 再来一局吧?");
             location.reload();
         } else {
             requestAnimationFrame(startanimation);
