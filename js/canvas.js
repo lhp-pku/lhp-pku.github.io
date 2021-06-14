@@ -68,7 +68,7 @@ backgroundimg.onload = function (ev) {
             $.ajax({
                 type :        "POST",
                 async :       false,
-                url :         "http://162.105.89.194:1806/insert",
+                url :         "http://123.60.222.181/insert",
                 contentType : "application/json",
                 dataType :    "json",
                 data :        JSON.stringify(userdata)
@@ -77,12 +77,12 @@ backgroundimg.onload = function (ev) {
             $.ajax({
                  type :       "GET",
                  async :      false,
-                 url :        "http://162.105.89.194:1806/query", 
+                 url :        "http://123.60.222.181/query", 
                  success :    function(scores){
                                   alert(scores);
                               }
             });
-            alert(userName+", 你的得分是: " + parseInt(GameData.score)+"\n太棒了! 再来一局吧?");
+            
             location.reload();
         } else {
             requestAnimationFrame(startanimation);
