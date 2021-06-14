@@ -72,6 +72,15 @@ backgroundimg.onload = function (ev) {
                 contentType : "application/json",
                 dataType :    "json",
                 data :        JSON.stringify(userdata)
+                error :       function(jqXHR, textStatus, errorThrown){
+                                  alert(jqXHR.responseText);
+                                  alert(jqXHR.status);
+                                  alert(jqXHR.readyState);
+                                  alert(jqXHR.statusText);
+                                  /*弹出其他两个参数的信息*/
+                                  alert(textStatus);
+                                  alert(errorThrown);
+                              }
             });
 
             $.ajax({
@@ -80,6 +89,15 @@ backgroundimg.onload = function (ev) {
                  url :        "http://123.60.222.181/query", 
                  success :    function(scores){
                                   alert(scores);
+                              }
+                error :       function(jqXHR, textStatus, errorThrown){
+                                  alert(jqXHR.responseText);
+                                  alert(jqXHR.status);
+                                  alert(jqXHR.readyState);
+                                  alert(jqXHR.statusText);
+                                  /*弹出其他两个参数的信息*/
+                                  alert(textStatus);
+                                  alert(errorThrown);
                               }
             });
             
