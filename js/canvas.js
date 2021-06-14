@@ -68,36 +68,24 @@ backgroundimg.onload = function (ev) {
             $.ajax({
                 type :        "POST",
                 async :       false,
-                url :         "http://123.60.222.181/insert",
+                url :         "https://123.60.222.181/insert",
                 contentType : "application/json",
                 dataType :    "json",
                 data :        JSON.stringify(userdata),
                 error :       function(jqXHR, textStatus, errorThrown){
                                   alert(jqXHR.responseText);
-                                  alert(jqXHR.status);
-                                  alert(jqXHR.readyState);
-                                  alert(jqXHR.statusText);
-                                  /*弹出其他两个参数的信息*/
-                                  alert(textStatus);
-                                  alert(errorThrown);
                               }
             });
 
             $.ajax({
                  type :       "GET",
                  async :      false,
-                 url :        "http://123.60.222.181/query", 
+                 url :        "https://123.60.222.181/query", 
                  success :    function(scores){
                                   alert(scores);
                               },
                 error :       function(jqXHR, textStatus, errorThrown){
                                   alert(jqXHR.responseText);
-                                  alert(jqXHR.status);
-                                  alert(jqXHR.readyState);
-                                  alert(jqXHR.statusText);
-                                  /*弹出其他两个参数的信息*/
-                                  alert(textStatus);
-                                  alert(errorThrown);
                               }
             });
             
