@@ -60,7 +60,7 @@ backgroundimg.onload = function (ev) {
             window.cancelAnimationFrame(startanimation);
             var userName = prompt("Game Over!\nYour score is: " + parseInt(GameData.score) + "\n请留下尊姓大名!", "Anyomous User");
             alert(userName+", 你的得分是: " + parseInt(GameData.score)+"\n太棒了! 再来一局吧?");
-
+/*
             var userdata = {
                 name :        userName, 
                 score :       GameData.score
@@ -88,7 +88,7 @@ backgroundimg.onload = function (ev) {
                                   alert(jqXHR.responseText);
                               }
             });
-            
+*/            
             location.reload();
         } else {
             requestAnimationFrame(startanimation);
