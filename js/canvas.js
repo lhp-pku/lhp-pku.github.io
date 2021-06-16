@@ -73,7 +73,7 @@ backgroundimg.onload = function (ev) {
                 dataType :    "json",
                 data :        JSON.stringify(userdata),
                 error :       function(jqXHR, textStatus, errorThrown){
-                                  alert(jqXHR.responseText);
+                                  console.info(jqXHR.responseText);
                               }
             });
 
@@ -84,8 +84,8 @@ backgroundimg.onload = function (ev) {
                  success :    function(scores){
                                   alert(scores);
                               },
-                error :       function(jqXHR, textStatus, errorThrown){
-                                  alert(jqXHR.responseText);
+                 error :      function(jqXHR, textStatus, errorThrown){
+                                  console.info(jqXHR.responseText);
                               }
             });
         
