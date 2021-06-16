@@ -60,7 +60,7 @@ backgroundimg.onload = function (ev) {
             window.cancelAnimationFrame(startanimation);
             var userName = prompt("Game Over!\nYour score is: " + parseInt(GameData.score) + "\n请留下尊姓大名!", "Anyomous User");
             alert(userName+", 你的得分是: " + parseInt(GameData.score)+"\n太棒了! 再来一局吧?");
-/*
+
             var userdata = {
                 name :        userName, 
                 score :       GameData.score
@@ -68,7 +68,7 @@ backgroundimg.onload = function (ev) {
             $.ajax({
                 type :        "POST",
                 async :       false,
-                url :         "https://123.60.222.181/insert",
+                url :         "https://phoenix-jump-backend.zhengnq.com/insert",
                 contentType : "application/json",
                 dataType :    "json",
                 data :        JSON.stringify(userdata),
@@ -80,7 +80,7 @@ backgroundimg.onload = function (ev) {
             $.ajax({
                  type :       "GET",
                  async :      false,
-                 url :        "https://123.60.222.181/query", 
+                 url :        "https://phoenix-jump-backend.zhengnq.com/query", 
                  success :    function(scores){
                                   alert(scores);
                               },
@@ -88,7 +88,7 @@ backgroundimg.onload = function (ev) {
                                   alert(jqXHR.responseText);
                               }
             });
-*/            
+        
             location.reload();
         } else {
             requestAnimationFrame(startanimation);
