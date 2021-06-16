@@ -42,7 +42,7 @@ def query():
     # return str(data)
 
     data = "排行榜\n"
-    data += "rank 0"  + " : " + "PhoenixRain" + " : 9999"
+    data += "rank 0"  + " : " + "PhoenixRain" + " : 9999\n"
     rank = 1
     for row in cursor.fetchall():
         data += "rank " + str(rank) + " : " + row[1] + " : " + str(row[2])
