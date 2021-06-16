@@ -41,7 +41,7 @@ def query():
 
     # return str(data)
 
-    data = "rank : name : score\n"
+    data = "排行榜\n"
     rank = 1
     for row in cursor.fetchall():
         data += "rank " + str(rank) + " : " + row[1] + " : " + str(row[2])
