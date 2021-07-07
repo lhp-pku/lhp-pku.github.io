@@ -86,6 +86,7 @@ backgroundimg.onload = function (ev) {
                                   alert(scores);
                               },
                  error :      function(jqXHR, textStatus, errorThrown){
+                                  alert("后端又出问题了，数据加载失败，请联系管理员PhoenixRain！");
                                   console.info(jqXHR.responseText);
                               }
             });
