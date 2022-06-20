@@ -61,35 +61,6 @@ backgroundimg.onload = function (ev) {
             window.cancelAnimationFrame(startanimation);
             var userName = prompt("Game Over!\nYour score is: " + parseInt(GameData.score) + "\n请留下尊姓大名!", "Anyomous User");
             alert(userName+", 你的得分是: " + parseInt(GameData.score)+"\n太棒了! 再来一局吧?");
-
-            var userdata = {
-                name :        userName, 
-                score :       GameData.score
-            };
-            $.ajax({
-                type :        "POST",
-                async :       false,
-                url :         "https://phoenix-jump-backend.zhengnq.com/insert",
-                contentType : "application/json",
-                dataType :    "json",
-                data :        JSON.stringify(userdata),
-                error :       function(jqXHR, textStatus, errorThrown){
-                                  console.info(jqXHR.responseText);
-                              }
-            });
-
-            $.ajax({
-                 type :       "GET",
-                 async :      false,
-                 url :        "https://phoenix-jump-backend.zhengnq.com/query", 
-                 success :    function(scores){
-                                  alert(scores);
-                              },
-                 error :      function(jqXHR, textStatus, errorThrown){
-                                  alert("后端又出问题了，数据加载失败，请联系管理员PhoenixRain！");
-                                  console.info(jqXHR.responseText);
-                              }
-            });
         
             location.reload();
         } else {
