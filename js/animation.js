@@ -17,8 +17,9 @@ if (!window.requestAnimationFrame) {
 
 
 function jump() {
-    Player.y = Player.y - Player.Yacceleration;
-    Player.Yacceleration -= 0.5;
+    DeltaTime = 0.3;
+    Player.y = Player.y - Player.Yacceleration * DeltaTime;
+    Player.Yacceleration -= 0.5 * DeltaTime;
     if (Player.Yacceleration < 0) {
         Player.condition = 0;
     }
